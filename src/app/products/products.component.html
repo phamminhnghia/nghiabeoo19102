@@ -1,0 +1,107 @@
+<div class="container">
+    <nav class="bg row">
+        <div class="nav nav-tabs" role="tablist">
+            <a class="nav-item nav-link active " data-toggle="tab" routerLink="/bai3" role="tab"
+                aria-controls="nav-home" aria-selected="true">Muatc</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" routerLink="/detailproduct" role="tab"
+                aria-controls="nav-profile" aria-selected="false">Home</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" routerLink="/products" role="tab"
+                aria-controls="nav-contact" aria-selected="false">Cart</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row ">
+            <h2 class="text-center">Product List View</h2>
+        </div>
+
+        <div class="card rounded">
+            <div class="card-header bg-info" style="color: white;font-size: 20px">Product List</div>
+            <div class="card-body ">
+                <form>
+                    <label for="exampleFormControlInput1">Filter:</label>
+                    <input class="ml-5" type="text" id="exampleFormControlInput1" [(ngModel)]="temp" name="filter">
+                </form>
+                <div class="table-responsive">
+                    <table class="table" id="SearchTextResult">
+                        <thead>
+                            <tr class="table-boderless">
+                                <th scope="col">
+                                    <button class="btn btn-primary" (click)="toggleEdit()">
+                                        {{isEdit ? 'Hide Image' : 'Show Image'}}</button>
+                                </th>
+                                <th scope="col" style="color: #0087ff">Product</th>
+                                <th scope="col" style="color: #0087ff">Code</th>
+                                <th scope="col" style="color: #0087ff">Available</th>
+                                <th scope="col" style="color: #0087ff">Price</th>
+                                <th scope="col" style="color: #0087ff">5 Star Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let products of listproducts | filter:temp'
+                                data-target="#exampleModalCenter,#fsModal" data-toggle="modal"
+                                (click)="showModal(products.productName,products.productCode,products.releaseDate,products.price,products.description,products.starRating,products.imageUrl)">
+                                <td>
+                                    <!-- <img *ngIf="isEdit" [src]="products.urlImage" alt="" width="40px" height="40px"> -->
+                                    <img *ngIf="isEdit" src="{{products.imageUrl}}" width="100px">
+                                </td>
+                                <td>{{products.productName}}</td>
+                                <td>{{products.productCode}}</td>
+                                <td>{{products.releaseDate}}</td>
+                                <td>{{products.price}}</td>
+                                <!-- <td>{{products.starRating}} -->
+                                <td>
+                                    <div class="justify-center">
+                                        <star-rating [value]="products.starRating" checkedcolor="black"
+                                            uncheckedcolor="white" size="30px"></star-rating>
+                                    </div>
+                                </td>
+                                <!-- modal -->
+                                <div id="fsModal" class="modal animated bounceIn" tabindex="-1" role="dialog"
+                                    aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="background-color: rgb(209, 208, 208)">
+                                                <h5 id="myModalLabel" class="modal-title">
+                                                    {{detail && detail.name}}
+                                                </h5>
+                                            </div>
+                                            <div class="modal-body row text-body">
+                                                <div class="col-8 row modalname">
+                                                    <div class="mr-2">
+                                                        <p>Name: </p>
+                                                        <p>Code: </p>
+                                                        <p>Description: </p>
+                                                        <p>Available: </p>
+                                                        <p>Price: </p>
+                                                        <p>5 Start Rating: </p>
+                                                    </div>
+                                                    <div class="">
+                                                        <p>{{detail.name}}</p>
+                                                        <p> {{detail.code}} </p>
+                                                        <p> {{products.description}}</p>
+                                                        <p> {{detail.date}} </p>
+                                                        <p>{{detail.price}} </p>
+                                                        <p>{{detail.star}} </p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-4 img">
+                                                    <img src="{{detail.img}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="ft " style="background-color: rgb(209, 208, 208)">
+                                                <!-- <i class="fa fa-arrow-left" style="font-size:36px"></i> -->
+                                                <i style="font-size:24px" class="fa" data-dismiss="modal">&#xf060;
+                                                    Back</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
