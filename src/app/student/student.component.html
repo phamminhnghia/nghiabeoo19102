@@ -1,0 +1,35 @@
+
+<div class="card">
+<div class="card-header" style="background: blanchedalmond">
+    <span><i class="fas fa-table"></i></span>
+    Chi Tiết
+</div>
+<div class="card-body">
+    <p><strong>Last Name: <br> </strong> {{ students.LastName }}</p>
+    <p><strong>First Name: <br></strong>{{ students.FirstMidName }}</p>
+    <p><strong>Enroll Date:<br> </strong>{{ students.EnrollmentDate | date:"dd/MM/yyyy" }}</p>
+    <table class="table table-bordered">
+        <thead>
+            <th>Course Title</th>
+            <th>Grade</th>
+            <th>Credits</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let enrollment of enrollments">
+                <td>{{ courses[enrollments.CourseID].title }}</td>
+                <td>{{ enrollments.grade.charCodeAt(0) }} </td>
+                <td>{{ courses[enrollments.CourseID].credits }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="card-footer" style="background: blanchedalmond">
+    <a routerLink="/page2">
+        <strong>
+            <span style="font-size: 25px;">&#x2190;</span>
+            Back
+        </strong>
+    </a>
+</div>
+
+</div>

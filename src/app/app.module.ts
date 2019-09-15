@@ -10,19 +10,14 @@ import { RatingModule } from 'ng-starrating';
 import { FormsModule } from '@angular/forms';
 import { Bai3Component } from './bai3/bai3.component';
 import { RouterModule, Routes } from '@angular/router';
+import { Lap2Component } from './lap2/lap2.component';
+import { StudentComponent } from './student/student.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
-  { path: 'detailproduct', component: DetailproductComponent },
-  { path: 'bai3', component: Bai3Component },
-  { path: 'products', component: ProductsComponent },
-
-  {
-    path: '',
-    component: Bai3Component,
-    data: { title: 'Heroes List' }
-  },
-
-
+  
 ];
 
 @NgModule({
@@ -30,7 +25,9 @@ const appRoutes: Routes = [
     AppComponent,
     ProductsComponent,
     DetailproductComponent,
-    Bai3Component
+    Bai3Component,
+    Lap2Component,
+    StudentComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +35,29 @@ const appRoutes: Routes = [
     Ng2SearchPipeModule,
     FormsModule,
     RouterModule.forRoot(
-      appRoutes,
+      [
+        { path: 'detailproduct', component: DetailproductComponent },
+        { path: 'bai3', component: Bai3Component },
+        { path: 'products', component: ProductsComponent },
+        { path: 'lap2', component: Lap2Component },
+        { path: 'student', component: StudentComponent },
+        { path: 'student/:ID', component: StudentComponent },
+        // { path: 'lap2/:id', component: StudentComponent },
+        
+      
+      
+        {
+          path: '',
+          component: Bai3Component,
+          data: { title: 'Heroes List' }
+        },
+      
+      
+      ]
+      ,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ), HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

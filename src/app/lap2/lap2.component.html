@@ -1,0 +1,53 @@
+<div class="container">
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item" ><a href="#">Library</a></li>
+    </ol>
+  </nav>
+  <div class="card" >
+    <div class="card-header">
+      Danh Sách Sinh Viên
+    </div>
+
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Search for..." aria-label="Recipient's username" aria-describedby="basic-addon2"
+  [(ngModel)]="temp" name="filter">
+  
+</div>
+
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">LAST NAME</th>
+                <th scope="col">FIRST NAME</th>
+                <th scope="col">ENROLLDATE</th>
+                <th scope="col">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let student of students | filter: temp">
+              <td>{{student.FirstMidName}}</td>
+              <td>{{student.LastName}}</td>
+              <td>{{student.EnrollmentDate}}</td>
+              <td>
+                <i [routerLink]="['/student', student.ID]" class="fa fa-info-circle"></i>
+                
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                            (click)="onDeleteStudent(student.ID)">Delete</button>
+              
+                 </td>
+              
+                    </tr>
+            </tbody>
+          </table>
+        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+  </div>
+
