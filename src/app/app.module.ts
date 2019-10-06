@@ -12,9 +12,16 @@ import { Bai3Component } from './bai3/bai3.component';
 import { RouterModule, Routes } from '@angular/router';
 import { Lap2Component } from './lap2/lap2.component';
 import { StudentComponent } from './student/student.component';
+import { FormBuilder } from '@angular/forms';
+
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShoppingComponent } from './shopping/shopping.component';
+import { SanphamComponent } from './sanpham/sanpham.component';
+import { ChitietComponent } from './chitiet/chitiet.component';
+import { Lap4Component } from './lap4/lap4.component';
+import { Lap5Component } from './lap5/lap5.component';
 
 const appRoutes: Routes = [
   
@@ -27,7 +34,12 @@ const appRoutes: Routes = [
     DetailproductComponent,
     Bai3Component,
     Lap2Component,
-    StudentComponent
+    StudentComponent,
+    ShoppingComponent,
+    SanphamComponent,
+    ChitietComponent,
+    Lap4Component,
+    Lap5Component
   ],
   imports: [
     BrowserModule,
@@ -42,7 +54,10 @@ const appRoutes: Routes = [
         { path: 'lap2', component: Lap2Component },
         { path: 'student', component: StudentComponent },
         { path: 'student/:ID', component: StudentComponent },
-        // { path: 'lap2/:id', component: StudentComponent },
+        { path: 'shopping', component: ShoppingComponent },
+        { path: 'sanpham', component: SanphamComponent },
+        { path: 'chitiet', component: ChitietComponent },
+        { path: 'lap5', component: Lap5Component },
         
       
       
